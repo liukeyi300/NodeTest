@@ -1,16 +1,16 @@
 var events = require('events');
+
 var eventEmitter = new events.EventEmitter();
 
-var connectHandler = function connected() {
-    console.log('Connect Success!');
-    eventEmitter.emit('data_received');
-}
-
-eventEmitter.on('connection', connectHandler);
-eventEmitter.on('data_received', function(){
-    console.log("Receive Data!");
+eventEmitter.on('a_event', function(arg1, arg2) {
+    console.log('a_event1:', arg1, arg2);
 });
 
-eventEmitter.emit('connection');
+eventEmitter.on('a_event', function(arg1, arg2){
+    console.log('a_event2', arg1, arg2);
+});
 
-console.log("END");
+setTimeout(function() {
+    eventEmitter.emit('a_event',2,3);
+}, 1000);
+console.log('end');

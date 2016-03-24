@@ -1,14 +1,13 @@
-var fs = require("fs");
-//var data = fs.readFileSync('input.txt');   //阻塞方式
+var fs = require('fs');
 
-/**
- * 非阻塞方式 
- */
+//var data = fs.readFileSync('input.txt');
+
 fs.readFile('input.txt', function(err, data) {
-    if (err) {
-        return console.error(err);
+    if(err) {
+        console.log(err);
     } else {
         console.log(data.toString());
     }
 });
-console.log("End");
+
+console.log("end");
