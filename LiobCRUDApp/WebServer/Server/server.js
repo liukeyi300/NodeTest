@@ -6,7 +6,9 @@ var app = express();
 var bodyParser = require('body-parser');
 var path = require('path');
 
-var login = require('./login');
+var Router = require('./router');
+var UserService = require('../Service/UserService');
+var LoginService = require('../Service/LoginService');
 
 var isLogin = false;
 
@@ -27,7 +29,7 @@ app.get('/UserCheck', function (req, res) {
 });
 
 app.post('/login', urlencodedParser, function (req, res) {
-    login.login(req, res);
+    Router.router(req, res);
 });
 
 var server = app.listen(1234, function () {
@@ -35,4 +37,6 @@ var server = app.listen(1234, function () {
     var port = server.address().port;
 
     console.log("The Website is running at http://%s:%s", host, port);
+
+    UserService.loadAllUser();
 });
