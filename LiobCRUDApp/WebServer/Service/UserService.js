@@ -5,7 +5,7 @@ var fs = require('fs');
 var path = require('path');
 var User = require('../DataModel/User');
 
-function UserService() { throw "Cannot create a instance for a Static Service Class!";}
+function UserService() { console.error("Cannot create a instance for a Static Service Class!");}
 
 UserService.loadAllUser = function() {
     fs.readFile(path.resolve('../UserInfo/users.json'), function(err, data) {
@@ -15,7 +15,7 @@ UserService.loadAllUser = function() {
             UserService.allUser = [];
             data = JSON.parse(data);
             for (var key in data) {
-                var user = new User(data[key].userName, data[key].pwd, data[key].profession, data[key].id);
+                var user = new User(data[key].name, data[key].password, data[key].profession, data[key].id);
                 UserService.allUser.push(user);
             }
         }
@@ -24,4 +24,4 @@ UserService.loadAllUser = function() {
 
 UserService.allUser = [];
 
-module.exports = UserService;
+module.exports = UserService;Log:Thu Apr 28 2016-Service : The Website is running at http://%s:%s

@@ -20,7 +20,7 @@ $(function() {
             success:function (data) {
                 var data = JSON.parse(data);
                 if (data.result) {
-                    //window.location.href = "UserCheck";
+                    window.location.href = "UserCheck";
                 }
             }
         });

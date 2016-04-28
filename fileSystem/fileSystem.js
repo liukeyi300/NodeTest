@@ -74,7 +74,7 @@ var buff = new Buffer(1024);
 //     }
 // });
 
-fs.mkdir('./tmp1/test1', function (err) {
+fs.mkdir('./tmp/test1', function (err) {
    if (err) {
       return console.error(err);
    }
