@@ -74,8 +74,8 @@ var buff = new Buffer(1024);
 //     }
 // });
 
-fs.mkdir('./tmp/test1', function (err) {
-   if (err) {
-      return console.error(err);
-   }
-});
+var a = fs.statSync("./tmp/test1/a.txt");
+var b = fs.statSync("./tmp1/test.txt");
+//console.log(fs.statSync('./tmpsdf/a.txt') + "\n");
+var i = 0;
+i ++;

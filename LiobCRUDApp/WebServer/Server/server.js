@@ -10,7 +10,7 @@ var Router = require('./router');
 var UserService = require('../Service/UserService');
 var LoginService = require('../Service/LoginService');
 var LogService = require('../Service/LogService');
-var log = new LogService("Service");
+var log = new LogService("Server");
 
 var isLogin = false;
 
@@ -40,7 +40,7 @@ var server = app.listen(1234, function () {
 
     //console.log("The Website is running at http://%s:%s", host, port);
 
-    log.log("The Website is running at http://%s:%s", host, port);
+    log.log("The Website is running at http://" + host + ":" + port);
 
     UserService.loadAllUser();
 });

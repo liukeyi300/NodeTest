@@ -24,4 +24,4 @@ UserService.loadAllUser = function() {
 
 UserService.allUser = [];
 
-module.exports = UserService;Log:Thu Apr 28 2016-Service : The Website is running at http://%s:%s
+module.exports = UserService;

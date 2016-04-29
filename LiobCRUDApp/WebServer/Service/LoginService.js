@@ -1,16 +1,21 @@
 /**
  * Created by Liukeyi on 2016/4/27.
  */
-var UserService = require('./UserService');
+var express = require('express');
+var session = require('express-session');
 
-function LoginService() { console.error("Cannot create a instance for a Static Service Class!"); }
+var UserService = require('./UserService');
+var LogService = require('./LogService');
+var log = new LogService('LoginService');
+
+function LoginService() { log.log("Cannot create a instance for a Static Service Class!"); }
 
 LoginService.login = function(req, res) {
     var username = req.body.username;
     var pwd = req.body.pwd;
     var re = {};
-    var date = new Date();
-    console.log(date.toDateString() +  '-LoginService : username: ' + username + '; password: ' + pwd);
+
+    log.log("Username: " + username + " Password: " + pwd);
 
     var user = UserService.allUser.filter(function(it) {
         return it.username === username && it.pwd === pwd;
