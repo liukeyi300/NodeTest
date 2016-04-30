@@ -8,7 +8,7 @@ var UserService = require('./UserService');
 var LogService = require('./LogService');
 var log = new LogService('LoginService');
 
-function LoginService() { log.log("Cannot create a instance for a Static Service Class!"); }
+function LoginService() { log.error("Cannot create a instance for a Static Service Class!"); }
 
 LoginService.login = function(req, res) {
     var username = req.body.username;
