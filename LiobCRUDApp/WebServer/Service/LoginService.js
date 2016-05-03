@@ -1,9 +1,6 @@
 /**
  * Created by Liukeyi on 2016/4/27.
  */
-var express = require('express');
-var session = require('express-session');
-
 var UserService = require('./UserService');
 var LogService = require('./LogService');
 var log = new LogService('LoginService');
@@ -23,7 +20,15 @@ LoginService.login = function(req, res) {
 
     if (user.length > 0) {
         re.result = true;
+        if (typeof req.session === 'undefined') {
+            req.session = {
+                isLogin: true
+            };
+        }
     } else {
+        req.session = {
+            isLogin: false
+        };
         re.result = false;
     }
     res.end(JSON.stringify(re));
