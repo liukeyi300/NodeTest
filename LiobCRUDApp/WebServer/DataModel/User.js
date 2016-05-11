@@ -6,6 +6,12 @@ function User(username, pwd, profession, id) {
     this.pwd = pwd || '';
     this.profession = profession || '';
     this.id = id || '';
+    this.uuid = '';
+
+
+    this.toString = function() {
+        return 'uuid='+ this.uuid + ';';
+    };
 }
 
 module.exports = User;

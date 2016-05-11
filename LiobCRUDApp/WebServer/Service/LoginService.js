@@ -20,15 +20,9 @@ LoginService.login = function(req, res) {
 
     if (user.length > 0) {
         re.result = true;
-        if (typeof req.session === 'undefined') {
-            req.session = {
-                isLogin: true
-            };
-        }
+        req.session.user = user[0].toString();
     } else {
-        req.session = {
-            isLogin: false
-        };
+        req.session.user = "";
         re.result = false;
     }
     res.end(JSON.stringify(re));
