@@ -8,7 +8,7 @@ var LogService = require('./LogService');
 
 var log = new LogService('UserService');
 
-function UserService() { log.error("Cannot create a instance for a Static Service Class!");}
+function UserService() { log.error("Cannot create a instance of a Static Service Class!");}
 
 UserService.loadAllUser = function() {
     fs.readFile(path.resolve('../UserInfo/users.json'), function(err, data) {

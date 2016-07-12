@@ -16,6 +16,7 @@ var Router = require('./router');
 var UserService = require('../Service/UserService');
 var LoginService = require('../Service/LoginService');
 var LogService = require('../Service/LogService');
+var Guid = require('../Service/Guid');
 
 var log = new LogService("Server");
 
@@ -69,6 +70,10 @@ var server = app.listen(1234, function () {
     var port = server.address().port;
 
     log.log("The Website is running at http://" + host + ":" + port);
+
+    for (var i = 0;i < 10; i ++) {
+        console.log(Guid.getGuid() + "\n");
+    }
 
     UserService.loadAllUser();
 });
