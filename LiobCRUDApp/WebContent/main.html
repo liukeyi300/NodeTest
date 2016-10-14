@@ -3,8 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <script src="lib/jquery/jquery-2.1.4.js"></script>
 </head>
 <body>
     Hello
+    <button>abc</button>
+
+    <script>
+        $(function() {
+            $('button').on('click', function(e) {
+                $.ajax({
+                    type: 'get',
+                    url: 'test',
+                    headers: {
+                        'Accept' : 'application/json'
+                    },
+                    success: function(data) {
+                        alert(data.user);
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 </html>

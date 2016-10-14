@@ -23,6 +23,10 @@ Router.router = function(req, res) {
         case "/UserCheck":
             res.sendFile(path.resolve('../../WebContent/main.html'));
             break;
+        case "/test":
+            log.log(req.session.user);
+            res.send({user: req.session.user});
+            break;
         default:
             log.error("Wrong Request Path: " + reqPath + "!");
             break;

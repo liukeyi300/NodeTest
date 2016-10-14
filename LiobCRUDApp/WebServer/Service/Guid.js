@@ -9,8 +9,10 @@ function Guid() { log.error("Cannot create a instance for a Static Service Class
 Guid.getGuid = function() {
     var key = '0123456789abcdef';
     var template = 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx';
-    var re = template.replace(/x/g, key[Math.floor(16 *  Math.random())]);
-    return re;
+    for (var i = 0; i < 32; i ++) {
+        template = template.replace(/x/, key[Math.floor(16 *  Math.random())]);
+    }
+    return template;
 };
 
 module.exports = Guid;

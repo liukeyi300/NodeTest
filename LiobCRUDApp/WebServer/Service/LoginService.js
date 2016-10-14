@@ -20,11 +20,12 @@ LoginService.login = function(req, res) {
 
     if (user.length > 0) {
         re.result = true;
-        req.session.user = user[0].toString();
+        req.session.user = user[0].username;
     } else {
         req.session.user = "";
         re.result = false;
     }
+
     res.end(JSON.stringify(re));
 };
 

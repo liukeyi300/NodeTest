@@ -38,7 +38,7 @@ app.use(session({
 }));
 
 app.get('/', function (req, res) {
-    if (req.session.user) {
+    if (typeof req.session !== 'undefined' && req.session.user) {
         res.sendFile(path.resolve('../../WebContent/main.html'));
     } else {
         res.sendFile(path.resolve('../../WebContent/index.html'));
@@ -46,13 +46,19 @@ app.get('/', function (req, res) {
 });
 
 app.get('/index.html', function(req, res) {
-    if (req.seesion.user) {
-        res.redirect(path.resolve('../../WebContent/main.html'));
+    if (typeof req.session !== 'undefined' && req.session.user) {
+        res.sendFile(path.resolve('../../WebContent/main.html'));
+    } else {
+        res.sendFile(path.resolve('../../WebContent/index.html'));
     }
 });
 
 app.get('/main.html', function(req, res) {
-    res.sendFile(path.resolve('../../WebContent/index.html'));
+    if (typeof req.session !== 'undefined' && req.session.user) {
+        res.sendFile(path.resolve('../../WebContent/main.html'));
+    } else {
+        res.sendFile(path.resolve('../../WebContent/index.html'));
+    }
 });
 
 app.use(express.static('../../WebContent'));
@@ -65,15 +71,19 @@ app.post('/login', urlencodedParser, function (req, res) {
     Router.router(req, res);
 });
 
+app.get('/test', function(req, res) {
+    Router.router(req, res);
+});
+
 var server = app.listen(1234, function () {
     var host = server.address().address;
     var port = server.address().port;
 
     log.log("The Website is running at http://" + host + ":" + port);
 
-    for (var i = 0;i < 10; i ++) {
+ /*   for (var i = 0;i < 10; i ++) {
         console.log(Guid.getGuid() + "\n");
-    }
+    }*/
 
     UserService.loadAllUser();
 });
