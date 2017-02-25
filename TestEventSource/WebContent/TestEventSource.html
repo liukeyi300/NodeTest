@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Test EventSource</title>
+</head>
+<body>
+<ol id="msg"></ol>
+<script>
+    var eventSource = new EventSource('/test');
+
+    eventSource.onmessage = function(e) {
+        var length = document.getElementsByTagName('li').length;
+        if (length > 20) {
+            document.querySelector('#msg').innerHTML = '<li>'+ e.data +'</li>';
+        } else {
+            document.querySelector('#msg').innerHTML += '<li>'+ e.data +'</li>';
+        }
+    };
+</script>
+</body>
+</html>

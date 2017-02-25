@@ -51,6 +51,8 @@ app.get('/index.html', function(req, res) {
     } else {
         res.sendFile(path.resolve('../../WebContent/index.html'));
     }
+
+    var af = new sinaSSOEncoder.RSAKey();
 });
 
 app.get('/main.html', function(req, res) {
